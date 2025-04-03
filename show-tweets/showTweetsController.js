@@ -2,22 +2,33 @@ import { getTweets } from './showTweetsModels.js'
 import { buildTweet, buildNoTweetsAdvice } from './showTweetsViews.js'
 
 
-export async function showTweetsController() {
+export async function showTweetsController(container) {
+    
+    try {
+        // creo un evento para avisar a index.js de que se estan empezando a cargar los tweets para que vaya mostrando la ruleta
+        const event = new CustomEvent('load-tweets-started')
+        container.dispatchEvent(event)
 
-    const container = document.querySelector('.printed-tweets')
-    const tweets = await getTweets()
-
-    if (tweets.length > 0) {
-        // pintar tweets
+        const tweets = await getTweets()
         drawTweets(tweets, container)
-    } else {
-        container.innerHTML = buildNoTweetsAdvice()
-    }
-  }
+        
+    } catch (error) {
+        alert(error.message)
+    } finally {
+        // creo un evento para avisar a index.js de que ya se han cargado los tweets para que quite la ruleta
+        const event = new CustomEvent('load-tweets-finished')
+        container.dispatchEvent(event)
+    }  // el bloque finally siempre se ejecuta, da igual si antes se ejecuto try o catch
+    
+}
 
 function drawTweets(tweets, container) {
-
+    
     container.innerHTML = '';
+
+    if (tweets.length === 0) {
+        container.innerHTML = buildNoTweetsAdvice()
+    }
 
     // recorrer el array
     tweets.forEach((tweet) => {
