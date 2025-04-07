@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loader = document.querySelector('.loader')
   const notifications = document.querySelector('.notifications')
   const { show, hide } = loaderController(loader)
+  const { showNotification } = notificationsController(notifications)
 
   container.addEventListener('load-tweets-started', () => {
     show()
@@ -20,11 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
   container.addEventListener('load-tweets-finished', () => {
     hide()
   })
-  
-  showTweetsController(container)
 
-  notificationsController(notifications)
-  
+  container.addEventListener('load-tweets-error', (event) => {
+    const errorMessage = event.detail
+    showNotification(errorMessage)
+  })
+
+  showTweetsController(container)
 })
 
 
