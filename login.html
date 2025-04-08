@@ -4,15 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="./notifications/notifications.css" />
+    <title>Login</title>
 </head>
 
 <body>
     <form>
-        <label for="name">Nombre: </label>
-        <input type="text" placeholder="introduce tu nombre" id="name" name="name">
-
         <label for="email">Email: </label>
         <input type="email" placeholder="introduce tu email" id="email" name="email" required>
 
@@ -20,15 +16,10 @@
         <input type="password" placeholder="introduce tu contraseña" id="password" name="password" required
             minlength="6">
 
-        <label for="password-confirm">Confirma contraseña: </label>
-        <input type="password" placeholder="confirma tu contraseña" id="password-confirm" name="password" required
-            minlength="6">
-
         <button type="submit">Crear usuario</button>
     </form>
 
-    <div class="notifications"></div>
-    <script type="module" src="./register.js"></script>
+    <script type="module" src="./login.js"></script>
 </body>
 
 </html>
