@@ -1,6 +1,7 @@
 import { loaderController } from './loader/loaderController.js'
 import { showTweetsController } from './show-tweets/showTweetsController.js'
 import { notificationsController } from './notifications/notificationsController.js'
+import { sessionController } from './session/sessionController.js'
 
 
 // esperamos a que el DOM este listo antes de intentar acceder a los nodos
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.printed-tweets')
   const loader = document.querySelector('.loader')
   const notifications = document.querySelector('.notifications')
+  const session = document.querySelector(".session")
   const { show, hide } = loaderController(loader)
   const { showNotification } = notificationsController(notifications)
 
@@ -28,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   showTweetsController(container)
+  sessionController(session)
 })
 
 

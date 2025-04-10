@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const { showNotification } = notificationsController(notifications)
 
     registerForm.addEventListener('register-error', (event) => {
-        const errorMessage = event.detail
-        showNotification(errorMessage)
+        const message = event.detail
+        showNotification(message)
     })
 
     registerForm.addEventListener('register-ok', (event) => {

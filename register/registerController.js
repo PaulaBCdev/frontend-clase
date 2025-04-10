@@ -1,3 +1,4 @@
+import { REGEXP } from "../utils/constants.js";
 import { createUser } from "./registerModel.js"
 
 export const registerController = (form) => {
@@ -20,7 +21,7 @@ export const registerController = (form) => {
         const errors = []
 
         // validar email
-        const emailRegExp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+        const emailRegExp = REGEXP.mail
         if (!emailRegExp.test(email)) {
             // mostrar error
             errors.push('El formato del email no es válido')
@@ -57,7 +58,6 @@ export const registerController = (form) => {
             })
             form.dispatchEvent(event)
 
-            // notificar al usuario del registro ok
             setTimeout(() => {
                 window.location = '/'
             }, 5000)

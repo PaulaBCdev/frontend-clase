@@ -6,7 +6,7 @@ export function loginController(loginForm) {
     loginForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const userEmailElement = loginForm.querySelector("#mail");
+        const userEmailElement = loginForm.querySelector("#email");
         const passwordElement = loginForm.querySelector("#password");
 
         const userEmail = userEmailElement.value;

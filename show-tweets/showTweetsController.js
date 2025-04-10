@@ -35,7 +35,8 @@ function drawTweets(tweets, container) {
 
     // recorrer el array
     tweets.forEach((tweet) => {
-        const printedTweets = document.createElement('div')
+        const printedTweets = document.createElement('a')
+        printedTweets.setAttribute("href", `./tweetDetail.html?id=${tweet.id}`)
         printedTweets.innerHTML = buildTweet(tweet)
 
         // que cada tweet se imprima por pantalla uno a uno
